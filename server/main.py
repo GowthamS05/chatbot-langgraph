@@ -15,11 +15,12 @@ from typing import Annotated, Sequence, List, Literal
 from langgraph.types import Command 
 from pydantic import BaseModel, Field 
 import pandas as pd
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 # Load environment variables
 load_dotenv()
-main = FastAPI(debug=True)
+main = FastAPI()
 main.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  
@@ -39,7 +40,7 @@ def serialise_ai_message_chunk(chunk):
 
 
 # Initialize LLM
-model = ChatOpenAI(model="gpt-4o-mini", temperature=0.0)
+model= ChatGoogleGenerativeAI(model="gemini-2.0-flash-001", temperature=0)
 search_tool = TavilySearchResults(max_results=1)
 tools = [search_tool]
 llm_with_tools = model.bind_tools(tools)
