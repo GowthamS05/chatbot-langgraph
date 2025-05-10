@@ -15,12 +15,11 @@ from typing import Annotated, Sequence, List, Literal
 from langgraph.types import Command 
 from pydantic import BaseModel, Field 
 import pandas as pd
-from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 # Load environment variables
 load_dotenv()
-main = FastAPI()
+main = FastAPI(debug=True)
 main.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  
@@ -40,7 +39,7 @@ def serialise_ai_message_chunk(chunk):
 
 
 # Initialize LLM
-model= ChatGoogleGenerativeAI(model="gemini-2.0-flash-001", temperature=0)
+model = ChatOpenAI(model="gpt-4o-mini", temperature=0.0)
 search_tool = TavilySearchResults(max_results=1)
 tools = [search_tool]
 llm_with_tools = model.bind_tools(tools)
@@ -130,13 +129,20 @@ async def open_prompt(state: State) -> Dict:
     # Get the last human message
     human_messages = [msg for msg in state["messages"] if isinstance(msg, HumanMessage)]
     last_human_message = human_messages[-1].content
-    
+    data = json.loads(MOCK_JSON)
+    df = pd.DataFrame(data)
+    columns = df.columns.tolist()
+
+# b = unique values per column, skipping 'sales'
+    rowData = {col: df[col].unique().tolist() for col in df.columns if col != 'sales'}
     # Create a prompt for the LLM to generate a pandas formula
     prompt = f"""
     Convert the following user query into a pandas DataFrame formula.
     Use 'df' as the variable name for the DataFrame.
     
     User query: {last_human_message}
+    "Columns:": {columns}
+    "Unique values per column (excluding 'sales'):":{rowData}
     
     Example:
     If the query is "Find sales above 1200 in the East region", the formula would be:
