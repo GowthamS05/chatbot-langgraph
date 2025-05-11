@@ -49,12 +49,12 @@ UI - https://github.com/GowthamS05/chatbot-langgraph-ui
 pip install -r requirements.txt
 
 3. .env file
-    TAVILY_API_KEY=your_tavily_api_key
-    LANGSMITH_TRACING=true
-    LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
-    LANGSMITH_API_KEY="your_langsmith_api_key"
-    LANGSMITH_PROJECT="chatbot_agent"
-    OPENAI_API_KEY=your_openai_api_key
+    - TAVILY_API_KEY=your_tavily_api_key
+    - LANGSMITH_TRACING=true
+    - LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
+    - LANGSMITH_API_KEY="your_langsmith_api_key"
+    - LANGSMITH_PROJECT="chatbot_agent"
+    - OPENAI_API_KEY=your_openai_api_key
 
 ## Run the server
  1. Start the FastAPI server:
