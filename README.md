@@ -1,6 +1,20 @@
-# Chatbot-LangGraph
+# Chatbot-LangGraph 
 
 This project implements a chatbot application using LangGraph, LangChain, and FastAPI. The chatbot is designed to process user queries, analyze data, and provide insights using a multi-agent system. It integrates tools like OpenAI's GPT models and Tavily Search for enhanced functionality.
+
+## UI codebase
+
+UI - https://github.com/GowthamS05/chatbot-langgraph-ui
+
+## Demo
+
+- Service - https://saleschatbot-latest.onrender.com/stream/docs
+- UI -  https://gowthams05.github.io/chatbot-langgraph-ui/
+
+## Images
+
+
+
 
 ## Architecture
 
