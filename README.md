@@ -8,7 +8,7 @@ UI - https://github.com/GowthamS05/chatbot-langgraph-ui
 
 ## Demo
 
-- Service - https://saleschatbot-latest.onrender.com/stream/docs
+- Service - https://saleschatbot-latest.onrender.com/docs
 - UI -  https://gowthams05.github.io/chatbot-langgraph-ui/
 
 ## Images
