@@ -12,7 +12,7 @@ UI - https://github.com/GowthamS05/chatbot-langgraph-ui
 - UI -  https://gowthams05.github.io/chatbot-langgraph-ui/
 
 ## Images
-
+![alt text](./server/demo.gif)
 
 
 
